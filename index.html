@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Odunayo's personal portfolio — a creative developer crafting thoughtful digital experiences.">
+	<title>Odunayo — Creative Developer</title>
+	<style>
+		:root { --ink:#14231f; --muted:#697873; --cream:#f6f5ef; --lime:#c8f169; --line:#dce1d8; --card:#fffef9; }
+		* { box-sizing:border-box; margin:0; padding:0; }
+		html { scroll-behavior:smooth; }
+		body { background:var(--cream); color:var(--ink); font-family:Arial, Helvetica, sans-serif; line-height:1.5; }
+		a { color:inherit; text-decoration:none; }
+		.wrap { width:min(1120px, calc(100% - 48px)); margin:auto; }
+		nav { display:flex; align-items:center; justify-content:space-between; padding:28px 0; }
+		.logo { font-size:1.15rem; font-weight:800; letter-spacing:-.04em; }
+		.logo span { color:#7e9c2c; }
+		.links { display:flex; gap:30px; color:var(--muted); font-size:.9rem; }
+		.links a:hover { color:var(--ink); }
+		.nav-cta { border:1px solid var(--ink); border-radius:30px; padding:10px 18px; font-size:.85rem; font-weight:700; }
+		.nav-cta:hover { background:var(--ink); color:white; }
+		.hero { min-height:calc(100vh - 90px); display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:70px; padding:65px 0 100px; }
+		.eyebrow { color:#7e9c2c; text-transform:uppercase; letter-spacing:.16em; font-size:.73rem; font-weight:800; margin-bottom:22px; }
+		h1 { font-size:clamp(3.6rem, 8vw, 7.5rem); line-height:.9; letter-spacing:-.085em; max-width:700px; }
+		h1 em { color:#7e9c2c; font-style:normal; }
+		.hero-copy { max-width:450px; margin:30px 0; color:var(--muted); font-size:1.05rem; }
+		.buttons { display:flex; align-items:center; gap:22px; }
+		.button { display:inline-block; background:var(--ink); color:white; border-radius:30px; padding:14px 23px; font-weight:700; font-size:.88rem; }
+		.button:hover { background:#7e9c2c; }
+		.text-link { font-size:.88rem; font-weight:700; border-bottom:1px solid var(--ink); padding-bottom:3px; }
+		.portrait { position:relative; background:var(--lime); min-height:490px; border-radius:48% 48% 18px 18px; display:flex; justify-content:center; align-items:flex-end; overflow:hidden; }
+		.portrait:before { content:'OD'; position:absolute; top:20px; right:22px; color:var(--ink); font-size:.75rem; font-weight:800; letter-spacing:.2em; }
+		.portrait-art { width:73%; height:86%; background:#243d35; border-radius:49% 49% 0 0; position:relative; }
+		.portrait-art:before { content:''; position:absolute; width:45%; aspect-ratio:1; top:10%; left:27%; border-radius:50%; background:#9b6047; box-shadow:0 -17px 0 9px #172a26; }
+		.portrait-art:after { content:''; position:absolute; left:12%; right:12%; bottom:0; height:45%; background:#efede1; border-radius:50% 50% 0 0; }
+		section { padding:100px 0; border-top:1px solid var(--line); }
+		.section-heading { display:flex; justify-content:space-between; align-items:end; margin-bottom:40px; }
+		.section-heading h2 { font-size:clamp(2rem,4vw,3.8rem); letter-spacing:-.07em; line-height:1; }
+		.section-heading p { max-width:310px; color:var(--muted); font-size:.93rem; }
+		.projects { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+		.project { padding:10px; background:var(--card); border:1px solid var(--line); border-radius:18px; transition:transform .25s, box-shadow .25s; }
+		.project:hover { transform:translateY(-7px); box-shadow:0 15px 35px #14231f12; }
+		.project-image { height:290px; border-radius:12px; display:flex; align-items:end; padding:20px; overflow:hidden; }
+		.project:nth-child(1) .project-image { background:#d8e9b9; }
+		.project:nth-child(2) .project-image { background:#e4d8ca; }
+		.project:nth-child(3) .project-image { background:#ccdfe0; }
+		.project:nth-child(4) .project-image { background:#ddd4e8; }
+		.mockup { width:88%; margin:auto; border:7px solid #14231f; border-bottom:0; border-radius:12px 12px 0 0; background:#fffef9; padding:22px; height:80%; box-shadow:8px 8px 0 #14231f22; }
+		.mockup b { display:block; font-size:1.5rem; letter-spacing:-.06em; margin-bottom:28px; }
+		.mockup i { display:block; width:70%; height:8px; border-radius:5px; background:var(--lime); margin:9px 0; }
+		.project-info { padding:20px 10px 12px; display:flex; justify-content:space-between; gap:10px; }
+		.project-info h3 { font-size:1.15rem; }
+		.project-info p { color:var(--muted); font-size:.82rem; margin-top:5px; }
+		.project-info span { font-size:1.3rem; }
+		.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; }
+		.about-grid h2 { font-size:clamp(2.5rem,5vw,5rem); letter-spacing:-.08em; line-height:.94; }
+		.about-text p { color:var(--muted); font-size:1.05rem; margin-bottom:25px; }
+		.skills { display:flex; flex-wrap:wrap; gap:10px; margin-top:32px; }
+		.skill { border:1px solid #bbc6bd; border-radius:30px; padding:9px 14px; font-size:.8rem; }
+		.contact { background:var(--ink); color:white; border-radius:28px; padding:70px; display:flex; justify-content:space-between; align-items:end; gap:30px; }
+		.contact h2 { font-size:clamp(2.8rem,6vw,6rem); letter-spacing:-.08em; line-height:.88; max-width:650px; }
+		.contact h2 span { color:var(--lime); }
+		.contact .button { background:var(--lime); color:var(--ink); white-space:nowrap; }
+		footer { display:flex; justify-content:space-between; padding:28px 0; color:var(--muted); font-size:.8rem; }
+		@media (max-width:760px) { .wrap { width:min(100% - 32px, 560px); } .links { display:none; } .hero, .about-grid { grid-template-columns:1fr; gap:35px; } .hero { padding-top:45px; } .portrait { min-height:360px; } .projects { grid-template-columns:1fr; } .project-image { height:250px; } .section-heading { display:block; } .section-heading p { margin-top:20px; } .contact { display:block; padding:38px 26px; } .contact .button { margin-top:30px; } }
+	</style>
+</head>
+<body>
+	<header class="wrap">
+		<nav><a class="logo" href="#top">odunayo<span>.</span></a><div class="links"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></div><a class="nav-cta" href="mailto:hello@odunayo.dev">Let's talk ↗</a></nav>
+	</header>
+	<main id="top" class="wrap">
+		<section class="hero" style="border:0">
+			<div><p class="eyebrow">Designer · Developer · Dreamer</p><h1>Building digital <em>experiences</em> with purpose.</h1><p class="hero-copy">Hi, I'm Odunayo. I create clean, thoughtful and memorable websites for people and brands that want to make an impact.</p><div class="buttons"><a class="button" href="#work">See my work ↘</a><a class="text-link" href="#about">More about me</a></div></div>
+			<div class="portrait" aria-label="Abstract portrait illustration"><div class="portrait-art"></div></div>
+		</section>
+		<section id="work"><div class="section-heading"><h2>Selected work</h2><p>A few projects I have had the pleasure of bringing to life recently.</p></div><div class="projects">
+			<article class="project"><div class="project-image"><div class="mockup"><b>nourish.</b><i></i><i style="width:45%"></i></div></div><div class="project-info"><div><h3>Nourish — Wellness app</h3><p>Branding · Product design</p></div><span>↗</span></div></article>
+			<article class="project"><div class="project-image"><div class="mockup"><b>Form / Function</b><i></i><i style="width:55%"></i></div></div><div class="project-info"><div><h3>Form / Function</h3><p>Web design · Development</p></div><span>↗</span></div></article>
+			<article class="project"><div class="project-image"><div class="mockup"><b>mono studio</b><i></i><i style="width:38%"></i></div></div><div class="project-info"><div><h3>Mono Studio portfolio</h3><p>Creative direction · Web</p></div><span>↗</span></div></article>
+			<article class="project"><div class="project-image"><div class="mockup"><b>good goods</b><i></i><i style="width:62%"></i></div></div><div class="project-info"><div><h3>Good Goods marketplace</h3><p>UX/UI · E-commerce</p></div><span>↗</span></div></article>
+		</div></section>
+		<section id="about"><div class="about-grid"><h2>A little bit about me.</h2><div class="about-text"><p>I’m a multidisciplinary creative based in Lagos, Nigeria. I care about the details, the big picture, and making things that feel as good as they work.</p><p>When I’m not designing or writing code, you’ll find me exploring new music, taking photos, or looking for the best bowl of jollof.</p><div class="skills"><span class="skill">Figma</span><span class="skill">HTML & CSS</span><span class="skill">JavaScript</span><span class="skill">React</span><span class="skill">Brand strategy</span></div></div></div></section>
+		<section id="contact"><div class="contact"><h2>Have a project in mind?<br><span>Let’s talk.</span></h2><a class="button" href="mailto:hello@odunayo.dev">Get in touch ↗</a></div></section>
+	</main>
+	<footer class="wrap"><span>© 2024 Odunayo</span><span>Made with intention</span></footer>
+</body>
+</html>
