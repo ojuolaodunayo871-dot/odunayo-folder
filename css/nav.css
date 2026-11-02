@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background: linear-gradient(135deg, #2193b0,#6dd5ed);
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 15px 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 2);
+}
+.logo{
+    font-size: 24px;
+    font-weight: bold;
+    color: #0077b6;
+}
+nav ul{
+    list-style: none;
+    display: flex;
+}
+
+nav ul li{
+position: relative;
+}
+
+nav ul li a{
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+nav ul li:hover a {
+    background-color: #0077b6;
+    color: white;
+}
+.submenu{
+    display: none;
+    position: absolute;
+    background: white;
+    top: 50px;
+    left: 0;
+    width: 180px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 2);
+}
+.submenu li{
+    display: block;
+}
+.dropdown:hover .submenu{
+    display: block;
+}
+.container{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    margin-top: 100px;
+    max-width: fit-content;
+    height: 50vh;
+    display: flex;
+}
+.card-login{
+    background-color: #0077b6;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 38vh;
+    border-radius: 5px;
+}
+.card-login input{
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px;
+    margin-top: 15px;
+}
+.card-register{
+    background-color: #0077b6;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+.card-register input{
+    padding: 5px;
+    width: 100%;
+    margin-top: 1.5px;
+}
+#btn-login{
+    background-color: rgb(20, 20, 22);
+    border: none;
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+    color: white;
+    border-radius: 0cap5px;
+    cursor: pointer;
+}
+#btn-login:hover{
+    background-color: blue;
+    color: white;
+}
+.btn-register{
+    background-color: black;
+    border: none;
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+    color: rgb(240, 237, 237);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-register:hover{
+    background-color: blue;
+    color: white;
+}

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #222;
+            background: white;
+        }
+
+        /* top-bar */
+        .top-bar {
+            background: #111820;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 13px;
+        }
+
+        .top-bar button {
+            margin-left: 20px;
+            padding: 8px 18px;
+            border: none;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+        }
+
+        /* navigation */
+        nav {
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e91e3f;
+        }
+
+        .logo span {
+            font-weight: normal;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 12px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .login {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 9px 15px;
+            border-radius: 20px;
+        }
+        .free{
+            background: #e91e3f;
+            border: none;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 20px;
+        }
+        /* categories */
+        .categories{
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            padding: 25px;
+            font-size: 13px;
+        }
+        .categories span:first-child{
+            color: #e91e3f;
+            border-bottom: 2px solid #e91e3f;
+            padding-bottom: 12px;
+        }
+        /* search */
+        .search-area{
+            text-align: center;
+            padding: 10px 20px 40px;
+        }
+        .search-box{
+            display: flex;
+            max-width: 800px;
+            height: 40px;
+            margin: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .search-box select{
+            border: none;
+            padding: 0 15px;
+            background: white;
+        }
+        .search-box input{
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 10px;
+        }
+        .search-btn{
+            width: 60px;
+            border: none;
+            background: #ed2847;
+            color: white;
+        }
+        .tags{
+            margin-top: 20px;
+        }
+        .tags span{
+            background: #f5f5f5;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 100px;
+        }
+        /* hero */
+        .hero{
+            max-width: 1000px;
+            margin: 30px auto 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            padding: 20px;
+        }
+        .hero-text h1{
+            font-size: 42px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+        .hero-text p{
+            color: #555;
+            line-height: 1.7;
+        }
+        /* image-grid */
+        .image-grid{
+            width: 45%;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 8px;   
+        }
+        .image{
+            height: 110px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+            background: #e8eeee;
+        }
+        .one{
+            background: #d9e0df;
+        }
+        .two{
+            background: #f5b23b;
+        }
+        .three{
+            background: #eee;
+        }
+        .four{
+            background: #7caa45;
+        }
+        .five{
+            background: #ddd;
+        }
+        .six{
+            background: #293c4a;
+            color: white;
+        }
+        /* solution */
+        .solution{
+            text-align: center;
+            background: #fafafa;
+            padding: 70px;
+        }
+        .solutions h2{
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 50px;
+        }
+        .solution-content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+        }
+        .solution-image{
+            width: 400px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #e8f1e9;
+            border-radius: 20px;
+        }
+        .solution-image div{
+            background: white;
+            padding: 25px 12px;
+            border-radius: 10px;
+            font-size: 30px;
+        }
+        .solution-text{
+            max-width: 400px;
+        }
+        .solution-text h3{
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+        .solution-text p{
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .solution-text button{
+            background: #ed2847;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- top bar -->
+    <div class="top-bar">
+        Get the content and creative tools you need - all in one place
+        <button>Try to free</button>
+    </div>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">creative <span>.ck</span></div>
+        <div class="nav-links">
+            <a href="#">IMAGES</a>
+            <a href="#">VIDIO</a>
+            <a href="#">DESIGN</a>
+            <a href="#">LEARN</a>
+            <a href="#">ENTERPRISE</a>
+        </div>
+        <div class="nav-right">
+            <span>❤️</span>
+            <span>🛒</span>
+            <button class="login">Log in</button>
+            <button class="free">Free trial</button>
+        </div>
+    </nav>
+    <!-- categories -->
+    <div class="categories">
+        <span>📁Images</span>
+        <span>📁Vidio</span>
+        <span>Editorial</span>
+        <span>🎵Music</span>
+        <span>🎶Sound effects</span>
+        <span>📁Templates</span>
+        <span>💠Ai generator</span>
+    </div>
+    <!-- search -->
+    <section class="search-area">
+        <div class="search-box">
+            <select>
+                <option>All images</option>
+                <option>Photos</option>
+                <option>Illustration</option>
+            </section>
+            <input type="text" placeholder="Start your next project">
+            <button class="search-btn">🔍</button>
+        </div>
+        <div class="tags">
+            <span>Rosh Hashana</span>
+            <span>Shoftar</span>
+            <span>Wardrobe</span>
+            <span>Selfie</span>
+        </div>
+    </section>
+    <!-- hero section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>If its in your head,<br> its on Creative</h1>
+            <p>
+                Whatever you need, you can find it here.
+                Premium content, <br> intuitive design tools,
+                and creative innovation - all at your <br> fingertips
+            </p>
+        </div>
+        <div class="image-grid">
+            <div class="image one">📷</div>
+            <div class="image two">👩‍🦰</div>
+            <div class="image three">🎈 </div>
+            <div class="image four">🌿</div>
+            <div class="image five">⚽</div>
+            <div class="image six">🪱</div>
+        </div>
+    </section>
+    <!-- second section -->
+    <section class="solutions">
+        <h2>Save time with our all-in-one solutions</h2>
+        <div class="soluton-content">
+            <div class="solution-image">
+                <div>🍪</div>
+                <div>🍼</div>
+                <div>🍾</div>
+                <div>🛍️</div>
+            </div>
+            <div class="solution-text">
+                <h3>Easy-to-use design tools</h3>
+                <p>Design something stunning in just a few clicks
+                    using our powerful editing tools
+                </p>
+                <button>Explore tools</button>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

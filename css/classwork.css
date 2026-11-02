@@ -1,0 +1,56 @@
+html
+body{
+    margin: 0px;
+    padding: 0p;
+}
+.container{
+/* background-color: rgb(217, 210, 210); */
+display: flex;
+padding: 20px;
+margin: auto;
+justify-content: center;
+grid-template-columns: 2 1fr;
+
+}
+.con-login{
+    background-color: rosybrown;
+    padding: 40px; 
+    width: 30%;
+}
+.head {
+    font-weight: 600;
+}
+
+input {
+    margin: 10px;
+    padding: 5px;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+}
+select {
+    margin: 10px;
+    padding: 5px;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+}
+
+.con-register{
+    width: 30%;
+    background-color: thistle;
+    padding: 40px;
+}

@@ -1,0 +1,38 @@
+.container{
+    background-color: aqua;
+    /* padding: 20px ; */
+    display: grid;
+    grid-template-columns: 2 1fr;
+    grid-template-rows: 10vh 70vh 10vh 10vh ;
+    
+}
+.header{
+    background-color: pink;
+    padding: 20px;
+    grid-column: 1/10
+}
+.sidebar{
+    background-color: bisque;
+    padding: 20px;
+    grid-column: 1/4;
+}
+.flash{
+    background-color: yellowgreen;
+    padding: 20px;
+    grid-column: 4/8;
+}
+.content{
+    background-color: brown;
+    padding: 20px;
+    grid-column: 8/10
+}
+.dav{
+    background-color: blueviolet;
+    padding: 20px;
+    grid-column: 1/10;
+}
+.footer{
+    background-color: green;
+    padding: 20px;
+    grid-column: 1/10;
+}

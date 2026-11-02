@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focusly — Make room for your best work</title>
+</head>
+<body>
+
+  <style>
+    :root {
+      --ink: #17152b;
+      --muted: #737187;
+      --accent: #7057f5;
+      --accent-dark: #5840dc;
+      --surface: #ffffff;
+      --background: #f8f7ff;
+      --border: #eeecf5;
+      --green: #37b98a;
+      --shadow: 0 24px 70px rgba(43, 31, 97, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 22px 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.7px;
+    }
+
+    .logo-mark {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--accent);
+      color: white;
+      font-size: 19px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 21px;
+      border: 0;
+      border-radius: 13px;
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .button:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .button.secondary {
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--ink);
+    }
+
+    .button.secondary:hover {
+      background: #f2f0ff;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+      color: var(--ink);
+      font-size: 21px;
+      cursor: pointer;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 64px;
+      padding: 76px 0 96px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding: 8px 12px;
+      border: 1px solid #e6e0ff;
+      border-radius: 999px;
+      background: #f0edff;
+      color: var(--accent-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    h1 {
+      max-width: 590px;
+      margin: 0;
+      font-size: clamp(44px, 6vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -4px;
+    }
+
+    h1 em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .hero-copy {
+      max-width: 480px;
+      margin: 22px 0 30px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .social-proof {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .avatars {
+      display: flex;
+      padding-left: 5px;
+    }
+
+    .avatar {
+      display: grid;
+      width: 30px;
+      height: 30px;
+      margin-left: -5px;
+      place-items: center;
+      border: 2px solid var(--background);
+      border-radius: 50%;
+      background: #ffd9b3;
+      font-size: 13px;
+    }
+
+    .avatar:nth-child(2) { background: #c8dcff; }
+    .avatar:nth-child(3) { background: #f5c8df; }
+    .avatar:nth-child(4) { background: #c9f0dc; }
+
+    .app-preview {
+      position: relative;
+      padding: 18px;
+      border: 1px solid rgba(112, 87, 245, 0.1);
+      border-radius: 26px;
+      background: linear-gradient(145deg, #eeeaff, #f8f7ff 70%);
+    }
+
+    .app-window {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .window-top {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .window-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e5e2ed;
+    }
+
+    .window-dot:first-child { background: #ff8b84; }
+    .window-dot:nth-child(2) { background: #ffc65c; }
+    .window-dot:nth-child(3) { background: #60ce9d; }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      min-height: 340px;
+    }
+
+    .sidebar {
+      padding: 23px 14px;
+      border-right: 1px solid var(--border);
+    }
+
+    .side-label {
+      margin: 0 0 13px 8px;
+      color: #aaa7b7;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .side-item {
+      margin-bottom: 5px;
+      padding: 9px 10px;
+      border-radius: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .side-item.active {
+      background: #f0edff;
+      color: var(--accent);
+    }
+
+    .dashboard-main {
+      padding: 25px 22px;
+    }
+
+    .dash-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .dash-heading h2 {
+      margin: 0;
+      font-size: 19px;
+      letter-spacing: -0.5px;
+    }
+
+    .dash-heading p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .dash-add {
+      width: 30px;
+      height: 30px;
+      border: 0;
+      border-radius: 9px;
+      background: var(--accent);
+      color: white;
+      font-size: 18px;
+    }
+
+    .progress-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 17px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #f8f7ff;
+    }
+
+    .progress-card strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .progress-card small {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .progress-ring {
+      display: grid;
+      width: 43px;
+      height: 43px;
+      place-items: center;
+      border: 4px solid #e7e2ff;
+      border-top-color: var(--accent);
+      border-right-color: var(--accent);
+      border-radius: 50%;
+      color: var(--accent);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .task {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f1eff5;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .check {
+      display: grid;
+      flex: 0 0 16px;
+      width: 16px;
+      height: 16px;
+      place-items: center;
+      border: 1px solid #dcd9e6;
+      border-radius: 5px;
+      color: white;
+      font-size: 10px;
+    }
+
+    .check.done {
+      border-color: var(--green);
+      background: var(--green);
+    }
+
+    .task small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 500;
+    }
+
+    .task.completed {
+      color: #aaa7b7;
+      text-decoration: line-through;
+    }
+
+    .feature-section {
+      padding: 86px 0;
+      background: white;
+    }
+
+    .section-heading {
+      max-width: 570px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -2px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: white;
+    }
+
+    .feature-icon {
+      display: grid;
+      width: 45px;
+      height: 45px;
+      margin-bottom: 20px;
+      place-items: center;
+      border-radius: 14px;
+      background: #f0edff;
+      color: var(--accent);
+      font-size: 21px;
+    }
+
+    .feature-card:nth-child(2) .feature-icon {
+      background: #e8f8f1;
+      color: #23976c;
+    }
+
+    .feature-card:nth-child(3) .feature-icon {
+      background: #fff3e5;
+      color: #e99535;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .cta-section {
+      padding: 80px 0;
+    }
+
+    .cta-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 48px;
+      border-radius: 24px;
+      background: var(--ink);
+      color: white;
+    }
+
+    .cta-box h2 {
+      max-width: 520px;
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.12;
+      letter-spacing: -1.7px;
+    }
+
+    .cta-box p {
+      margin: 12px 0 0;
+      color: #c0bed0;
+    }
+
+    .cta-box .button {
+      flex: 0 0 auto;
+      background: #8b78ff;
+    }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 42px;
+        padding: 55px 0 70px;
+      }
+
+      .hero-text {
+        text-align: center;
+      }
+
+      .hero-copy {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .hero-actions,
+      .social-proof {
+        justify-content: center;
+      }
+
+      .app-preview {
+        width: min(100%, 560px);
+        margin: 0 auto;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        padding: 23px;
+      }
+
+      .cta-box {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 35px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 30px, 1120px);
+      }
+
+      header {
+        padding: 15px 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        z-index: 5;
+        top: 70px;
+        right: 15px;
+        left: 15px;
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        background: white;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px;
+      }
+
+      .nav-links .button {
+        margin-top: 6px;
+      }
+
+      h1 {
+        letter-spacing: -2.5px;
+      }
+
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .dashboard-main {
+        padding: 20px 16px;
+      }
+
+      .app-preview {
+        padding: 10px;
+      }
+
+      .cta-box {
+        padding: 28px 23px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#" aria-label="Focusly home">
+        <span class="logo-mark">✦</span>
+        Focusly
+      </a>
+
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+        ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a class="button" href="#get-started">Get started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero" id="about">
+      <div class="hero-text">
+        <div class="eyebrow"><span></span> Your day, back in focus</div>
+        <h1>Make room for your <em>best work.</em></h1>
+        <p class="hero-copy">
+          A calmer way to plan your day, stay focused, and make meaningful
+          progress—without the busywork.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button" href="#get-started">Start for free <span aria-hidden="true">→</span></a>
+          <a class="button secondary" href="#features">Explore features</a>
+        </div>
+
+        <div class="social-proof">
+          <div class="avatars" aria-hidden="true">
+            <span class="avatar">🙂</span>
+            <span class="avatar">😊</span>
+            <span class="avatar">😎</span>
+            <span class="avatar">🙂</span>
+          </div>
+          <span><strong>10,000+</strong> people finding their focus</span>
+        </div>
+      </div>
+
+      <div class="app-preview" aria-label="Preview of the Focusly app dashboard">
+        <div class="app-window">
+          <div class="window-top" aria-hidden="true">
+            <span class="window-dot"></span>
+            <span class="window-dot"></span>
+            <span class="window-dot"></span>
+          </div>
+
+          <div class="dashboard">
+            <aside class="sidebar">
+              <p class="side-label">Workspace</p>
+              <div class="side-item active">◷ &nbsp; My day</div>
+              <div class="side-item">▤ &nbsp; Upcoming</div>
+              <div class="side-item">✓ &nbsp; Completed</div>
+              <p class="side-label" style="margin-top: 24px;">Projects</p>
+              <div class="side-item">● &nbsp; Website refresh</div>
+              <div class="side-item">● &nbsp; Personal</div>
+            </aside>
+
+            <div class="dashboard-main">
+              <div class="dash-heading">
+                <div>
+                  <h2>Good morning, Alex ☀️</h2>
+                  <p>Tuesday, November 3 · 3 tasks today</p>
+                </div>
+                <button class="dash-add" aria-label="Add a task">+</button>
+              </div>
+
+              <div class="progress-card">
+                <div>
+                  <strong>Your daily focus</strong>
+                  <small>You're building great momentum.</small>
+                </div>
+                <div class="progress-ring">66%</div>
+              </div>
+
+              <div class="task completed">
+                <span class="check done">✓</span>
+                <span>Review project notes<small>9:00 AM · 25 min</small></span>
+              </div>
+              <div class="task">
+                <span class="check"></span>
+                <span>Prepare design presentation<small>10:30 AM · 45 min</small></span>
+              </div>
+              <div class="task">
+                <span class="check"></span>
+                <span>Take a proper lunch break<small>12:30 PM · 45 min</small></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-section" id="features">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Less juggling. More doing.</h2>
+          <p>Everything you need to make your day feel a little more manageable.</p>
+        </div>
+
+        <div class="features">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">◎</div>
+            <h3>Find your focus</h3>
+            <p>Give important work the time and attention it deserves, one task at a time.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">▤</div>
+            <h3>Plan your day</h3>
+            <p>Turn big plans into clear, realistic steps that are easy to get started on.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">↗</div>
+            <h3>See your progress</h3>
+            <p>Celebrate small wins and build a routine that works for your life.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="container cta-section" id="get-started">
+      <div class="cta-box">
+        <div>
+          <h2>Your next focused day starts here.</h2>
+          <p>Get started for free. No credit card required.</p>
+        </div>
+        <a class="button" href="mailto:hello@example.com">Get started for free →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="logo" href="#"><span class="logo-mark">✦</span> Focusly</a>
+      <span>© 2026 Focusly. Made for your best work.</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", isOpen);
+      menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+      menuButton.textContent = isOpen ? "×" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
+        menuButton.textContent = "☰";
+      });
+    });
+  </script>
+</body>
+</html>
+```
+</body>
+</html>

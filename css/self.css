@@ -1,0 +1,52 @@
+html
+body{
+    margin: 0PX;
+    padding: 0PX;
+}
+.container{
+    /* background-color: darkgrey; */
+    display: flex;
+    padding: 20px;
+    margin: auto;
+    justify-content: center;
+    grid-template-columns: 2 1fr;
+}
+.con-login{
+    background-color: burlywood;
+    padding: 50px;
+    width: 30%;
+}
+.head{
+    font-weight: 600px;
+}
+input{
+    margin: 10px;
+    padding: 5px;
+    font-size: 16px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+}
+button{
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    width: 100%
+}
+.con-register{
+    background-color: darkcyan;
+    padding: 50px;
+    width: 30%;
+
+}
+select{
+    margin: 10px;
+    padding: 5px;
+    font-size: 16px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+}

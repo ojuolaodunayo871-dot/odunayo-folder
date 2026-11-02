@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            padding: 20px;
+            gap: 20px;
+            display: flex;
+            width: 100%;
+        }
+        .nav{
+            /* background-color: blue; */
+            padding: 20px;
+            color: black;
+            /* text-align: center;   */
+        }
+        .total{
+            background-color: whitesmoke;
+            color: black;
+            border-radius: 5px;
+            margin: 5px;
+            padding: 20px;
+            text-align: left;
+            box-shadow: 3px 0px 0px 0px rgb(106, 106, 225);
+            flex: 1;
+        }
+        .detected{
+            background-color: whitesmoke;
+            color: black; 
+            border-radius: 5px; 
+            margin: 5px; 
+            padding: 20px;
+            text-align: left;
+            box-shadow: 3px 0px 0px 0px rgb(254, 50, 50);
+            flex: 1;
+        }
+        .genuine{
+            background-color: whitesmoke;
+            color: black;
+            border-radius: 5px;
+            box-shadow: 3px 0px 0px 0px green;
+            padding: 20px;
+            margin: 5px;
+            text-align: left;
+            flex: 1;
+        }
+        .rate{
+            background-color: whitesmoke;
+            color: black;
+            text-align: left;
+            border-radius: 5px;
+            box-shadow: 3px 0px 0px 0px brown;
+            padding: 20px;
+            margin: 5px;
+            flex: 1;
+        }
+        .odun{
+            padding: 10px;
+            display: flex;
+        }
+        .Prediction{
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            float: right;
+        }
+        .alert{
+            background-color: whitesmoke;
+            width: 35%;
+            margin: 20px;
+            border-radius: 5px;
+            float: right;
+            margin-bottom: 30px;
+        }
+        .alert h3{
+            background-color: red;
+            color: white;
+            padding: 5px;
+            margin: 0;
+        }
+        .alert p{
+            padding: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+            <div class="nav">
+            <h1>Fraud Analyst Dashboard</h1>
+            <button class="Prediction">+ New prediction</button>
+        </div>
+    <div class="container">
+        <div class="total">
+            <p>0</p>
+            <p>Total Prediction</p>
+        </div>
+        <div class="detected">
+            <p>0</p>
+           <p> Fraud Detected</p>
+        </div>
+        <div class="genuine">
+            <p>0</p>
+            <p>genuine</p>
+        </div>
+        <div class="rate">
+            <p>0%</p>
+            <p>Fraud Rate</p>
+        </div>
+    </div>
+            <div class="alert">
+            <h3>Suspicious Alerts</h3>
+            <p>No Suspicious transaction</p>
+        </div>
+    <h5>Monthly Fraud Statistics</h5>
+        <table border="1" width="60%" height="140px">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+    
+    
+</body>
+</html>
